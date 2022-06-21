@@ -1,0 +1,145 @@
+{
+  "laneConfigs": {
+    "LAN_A": {
+      "laneName": "LAN_XE_VAO",
+      "mode": 1,
+      "active": true,
+      "RFID": {
+        "PathID": "2da4bed2",
+        "DeviceName": "DO_DOC_THE_VAO"
+      },
+      "faceCam": {
+        "CamName": "CAM_MAT_VAO",
+        "RstpConnectionString": "E:/matvao.mp4",
+        "ImageROI": "630, 180, 700, 700",
+        "FrameWidth": 1920,
+        "FrameHeight": 1080,
+        "FPS": 10,
+        "NumberOfImageTokeep": 30,
+        "CollectInterval": 600
+      },
+      "plateCam": {
+        "CamName": "CAM_BIEN_VAO",
+        "RstpConnectionString": "E:/biensovao.mp4",
+        "ImageROI": "760, 360, 700, 700",
+        "FrameWidth": 1920,
+        "FrameHeight": 1080,
+        "FPS": 10,
+        "NumberOfImageTokeep": 0,
+        "CollectInterval": 1000
+      }
+    },
+    "LAN_B": {
+      "laneName": "LAN_XE_RA",
+      "mode": 2,
+      "active": true,
+      "RFID": {
+        "PathID": "34e23f4d",
+        "DeviceName": "DO_DOC_THE_RA"
+      },
+      "faceCam": {
+        "CamName": "CAM_MAT_RA",
+        "RstpConnectionString": "E:/matra.mp4",
+        "ImageROI": "575, 60, 700, 700",
+        "FrameWidth": 1920,
+        "FrameHeight": 1080,
+        "FPS": 10,
+        "NumberOfImageTokeep": 30,
+        "CollectInterval": 600
+      },
+      "plateCam": {
+        "CamName": "CAM_BIEN_RA",
+        "RstpConnectionString": "E:/biensora.mp4",
+        "ImageROI": "470, 200, 700, 700",
+        "FrameWidth": 1920,
+        "FrameHeight": 1080,
+        "FPS": 10,
+        "NumberOfImageTokeep": 0,
+        "CollectInterval": 1000
+      }
+    }
+  },
+  "faceMaskAPIConfig": {
+    "APIName": "Mask_Detect_Yolov5",
+    "URL": "http://127.0.0.1:8000/detect/",
+    "TimeOut": 3600000,
+    "Method": "POST",
+    "Params": [
+      "name_cam:string",
+      "image:bitmap"
+    ],
+    "Response": [
+      "code",
+      "msg",
+      "data",
+      "error_code"
+    ]
+  },
+  "faceEmbeddingAPIConfig": {
+    "APIName": "Face_Get_Embedding",
+    "URL": "http://127.0.0.1:8100/get_emb/",
+    "TimeOut": -1,
+    "Method": "POST",
+    "Params": [
+      "image_path:string"
+    ],
+    "Response": [
+      "code",
+      "msg",
+      "emb",
+      "model",
+      "encode_type",
+      "error_code"
+    ]
+  },
+  "faceDistanceAPIConfig": {
+    "APIName": "Face_Calc_Distance",
+    "URL": "http://127.0.0.1:8200/distance/",
+    "TimeOut": -1,
+    "Method": "POST",
+    "Params": [
+      "in_emb_list:string",
+      "in_emb_list:string"
+    ],
+    "Response": [
+      "code",
+      "msg",
+      "model",
+      "encode_type",
+      "error_code",
+      "distance"
+    ]
+  },
+  "plateAPIConfig": {
+    "APIName": "Plate_Recognition",
+    "URL": "http://127.0.0.1:8400/plate/",
+    "TimeOut": -1,
+    "Method": "POST",
+    "Params": [
+      "name_cam:string",
+      "image:bitmap"
+    ],
+    "Response": [
+      "code",
+      "msg",
+      "plate_text",
+      "error_code"
+    ]
+  },
+  "rootDir": "D:/ParkingAppData",
+  "captureRelaxTime": 125,
+  "relaxStrictly": false,
+  "relaxTime": 1500,
+  "showImageTime": 5000,
+  "systemlogTime": 30000,
+  "queueExecuteInterval": 100,
+  "monitorTime": 3000,
+  "DBSaveAfterLockTime": 3000,
+  "FEE": 5000,
+  "DEBUG": true,
+  "DATA_MIGRATE": false,
+  "DEBUG_API": false,
+  "DEBUG_WEB_CAM": false,
+  "IGNORE_ROI": false,
+  "USE_RFID": false
+}
